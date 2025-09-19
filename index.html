@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabalho - Intervenção no Pavimento</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: linear-gradient(120deg, #e0eafc 0%, #cfdef3 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        header {
+            background: #2c3e50;
+            color: #fff;
+            padding: 32px 0 18px 0;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+        }
+        header h2 {
+            margin: 0 !important;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #f4f4f4;
+            font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+        }
+        .container {
+            background: #fff;
+            margin: 40px auto 0 auto;
+            padding: 32px 28px 28px 28px;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(44,62,80,0.10);
+            max-width: 900px;
+        }
+        .card {
+            background: #f9fafc;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(44,62,80,0.06);
+            padding: 0;
+            margin-bottom: 18px;
+            overflow: hidden;
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #e0eafc;
+            padding: 18px 20px 8px 20px;
+            border-bottom: 1px solid #cfdef3;
+        }
+        .card-header h3 {
+            margin: 0;
+            font-size: 1.15rem;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+        .min-btn {
+            background: #2c3e50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            width: 28px;
+            height: 28px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .min-btn:hover {
+            background: #34495e;
+        }
+        .card-content {
+            padding: 16px 20px 20px 20px;
+        }
+        .card h3 {
+            margin-top: 0;
+            color: #2c3e50;
+            font-size: 1.3rem;
+        }
+        .card p, .card a {
+            color: #34495e;
+            font-size: 1rem;
+            margin: 4px 0;
+        }
+        .card img {
+            margin-top: 12px;
+            border-radius: 8px;
+            max-width: 100%;
+            box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+        }
+        .coords {
+            font-family: 'Courier New', Courier, monospace;
+            background: #eaf6fb;
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 16px 6px;
+            }
+            .card {
+                padding: 12px 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Trabalho</h1>
+        <h2>Intervenção necessária em pavimentos</h2>
+    </header>
+    <section style="max-width:900px;margin:32px auto 0 auto;padding:24px 28px 18px 28px;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(44,62,80,0.08);font-family:'Montserrat',Arial,sans-serif;">
+        <h2 style="margin-top:0;font-size:1.2rem;color:#2c3e50;">Quem somos?</h2>
+        <p>Somos um grupo de alunos do Colégio Prisma, constituído por Eduardo Angelo, Pietro, Renzo, Sofia e Sophia, tendo em vista contribuir com o <strong>ODS 9</strong> (Indústria, Inovação e Infraestrutura). Nosso projeto tem o objetivo de listar e acompanhar casos de danos em vias públicas, facilitando a sua identificação, priorização e resolução.</p>
+    </section>
+    <section style="max-width:900px;margin:24px auto 0 auto;padding:24px 28px 18px 28px;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(44,62,80,0.08);font-family:'Montserrat',Arial,sans-serif;">
+        <h2 style="margin-top:0;font-size:1.2rem;color:#2c3e50;">O que é GdP?</h2>
+        <p><strong>GdP</strong> significa <strong>Grau de Prioridade</strong>. Os casos são classificados de 1 a 10, sendo 1 o menor grau (casos menos graves) e 10 o maior grau (casos mais graves e urgentes).</p>
+    </section>
+    <main>
+        <div style="max-width:900px;margin:24px auto 0 auto;display:flex;justify-content:flex-end;">
+            <input type="text" id="searchBar" placeholder="Buscar casos..." style="width:320px;padding:10px 14px;border-radius:6px;border:1px solid #ccc;font-size:1rem;font-family:'Montserrat',Arial,sans-serif;box-shadow:0 1px 4px rgba(44,62,80,0.06);">
+        </div>
+        <div class="container" id="casesContainer">
+            <section>
+                <h2 style="color:#e74c3c; font-size:1.3rem; margin-bottom:10px; font-family:'Montserrat',Arial,sans-serif;">Em espera</h2>
+                <div class="card" id="card1">
+                    <div class="card-header">
+                        <h3>GdP 10 | Rua Alfa</h3>
+                        <button class="min-btn" onclick="toggleCard('card1')">–</button>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Status:</strong> <span style="color:#e74c3c; font-weight:bold;">Em espera</span></p>
+                        <p><strong>Local:</strong> <a href="https://www.google.com/maps/place/Col%C3%A9gio+Prisma/@-16.7218085,-43.870513,17z/data=!3m1!4b1!4m6!3m5!1s0xab54aa80b7ca7f:0x37711f8a23bf8469!8m2!3d-16.7218085!4d-43.8679381!16s%2Fg%2F1ydkdp679?entry=ttu&g_ep=EgoyMDI1MDkxNi4wIKXMDSoASAFQAw%3D%3D" target="_blank">Rua Alfa</a></p>
+                        <p><strong>Coordenadas:</strong> <span class="coords">3,14159265358979323846264</span></p>
+                        <img src="https://s2-g1.glbimg.com/WuCd-6c-qjL2iRcdzrvuAyIFh8g=/0x0:4147x2764/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2024/K/G/TxaPpTQ8GQY9TCmYoQrA/2024-06-21t075251z-826180351-rc2ef8aa9g1s-rtrmadp-3-china-accident.jpg" alt="Foto do local do problema">
+                    </div>
+                </div>
+            </section>
+            <section>
+                <h2 style="color:#e67e22; font-size:1.3rem; margin-bottom:10px; font-family:'Montserrat',Arial,sans-serif;">Em andamento</h2>
+                <div class="card" id="card2">
+                    <div class="card-header">
+                        <h3>GdP 2 | Rua Beta</h3>
+                        <button class="min-btn" onclick="toggleCard('card2')">–</button>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Status:</strong> <span style="color:#e67e22; font-weight:bold;">Em andamento</span></p>
+                        <p><strong>Local:</strong> <a href="https://www.google.com/maps" target="_blank">Rua Beta</a></p>
+                        <p><strong>Coordenadas:</strong> <span class="coords">1,61803398874989484820458</span></p>
+                        <img src="https://thumbs.dreamstime.com/b/road-terrible-condition-due-to-ignoring-weight-limit-driving-very-heavy-truks-asphalt-road-all-inflows-holes-260782384.jpg?w=992" alt="Foto do local do problema">
+                    </div>
+                </div>
+            </section>
+            <section>
+                <h2 style="color:#27ae60; font-size:1.3rem; margin-bottom:10px; font-family:'Montserrat',Arial,sans-serif;">Resolvido</h2>
+                <div class="card" id="card3">
+                    <div class="card-header">
+                        <h3>GdP 7 | Rua Gamma</h3>
+                        <button class="min-btn" onclick="toggleCard('card3')">–</button>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Status:</strong> <span style="color:#27ae60; font-weight:bold;">Resolvido</span></p>
+                        <p><strong>Local:</strong> <a href="https://www.google.com/maps" target="_blank">Rua Gamma</a></p>
+                        <p><strong>Coordenadas:</strong> <span class="coords">2,71828182845904523536028</span></p>
+                        <img src="https://s2-g1.glbimg.com/YFtco3CtgCgTxWJJpaQI0TtSerY=/0x0:1046x585/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2019/D/g/7ZhcxARpilkFRCbgkuUg/estrada-terra.jpg" alt="Foto do local do problema">
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <script>
+        function toggleCard(cardId) {
+            var card = document.getElementById(cardId);
+            var content = card.querySelector('.card-content');
+            var btn = card.querySelector('.min-btn');
+            if (content.style.display === 'none') {
+                content.style.display = '';
+                btn.textContent = '–';
+            } else {
+                content.style.display = 'none';
+                btn.textContent = '+';
+            }
+        }
+
+        // Search functionality
+        document.getElementById('searchBar').addEventListener('input', function() {
+            var query = this.value.toLowerCase();
+            var container = document.getElementById('casesContainer');
+            var cards = container.querySelectorAll('.card');
+            cards.forEach(function(card) {
+                var text = card.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
